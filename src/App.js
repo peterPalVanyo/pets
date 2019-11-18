@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import PetList from "./PetList";
-import Pet from "./Pet";
-import { Route, Switch } from "react-router-dom";
+import Navbar from "./Navbar";
+import Routes from "./Routes";
 import "./App.css";
 import ragacs from "./images/ragacs.jpg";
 import pajti from "./images/pajti.jpg";
@@ -53,22 +52,13 @@ class App extends Component {
     ]
   };
   render() {
-    const getPet = props => {
-      let name = props.match.params.name;
-      let targetPet = this.props.pets.find(
-        pet => pet.name.toLowerCase() === name.toLowerCase()
-      );
-      return <Pet {...props} pet={targetPet} />;
-    };
     return (
-      <Switch>
-        <Route
-          exact
-          path="/pets"
-          render={() => <PetList pets={this.props.pets} />}
-        />
-        <Route exact path="/pets/:name" render={getPet} />
-      </Switch>
+      <div>
+        <Navbar pets={this.props.pets} />
+        <div className="container">
+          <Routes pets={this.props.pets} />
+        </div>
+      </div>
     );
   }
 }
