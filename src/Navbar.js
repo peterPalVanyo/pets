@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {NavLink, Link} from 'react-router-dom'
+//if the NavLink doesnot work: npm i path-to-regexp@1.7.0 -S
 
 class Nabvar extends Component {
   render() {
