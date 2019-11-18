@@ -1,12 +1,13 @@
-import React, {Component} from "react";
-import PetList from './PetList'
-import {Route, Switch} from 'react-router-dom'
+import React, { Component } from "react";
+import PetList from "./PetList";
+import Pet from "./Pet";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import ragacs from './images/ragacs.jpg'
-import pajti from './images/pajti.jpg'
-import ragacsv from './images/ragacsv.jpg'
+import ragacs from "./images/ragacs.jpg";
+import pajti from "./images/pajti.jpg";
+import ragacsv from "./images/ragacsv.jpg";
 
-class App extends Component  {
+class App extends Component {
   static defaultProps = {
     pets: [
       {
@@ -30,7 +31,7 @@ class App extends Component  {
         ]
       },
       {
-        name: "Ragacs(vidéki)",
+        name: "Ragacs-videki",
         age: 10,
         src: ragacsv,
         facts: [
@@ -38,8 +39,8 @@ class App extends Component  {
           "Falusi bandát toboroz",
           "A fűben szeret heverészni"
         ]
-      },
-/*       {
+      }
+      /*       {
         name: "Pajti(vidéki)",
         age: 8,
         src: pajtiv,
@@ -50,13 +51,25 @@ class App extends Component  {
         ]
       } */
     ]
-  }
+  };
   render() {
-    console.log(this.props.pets)
+    const getPet = props => {
+      let name = props.match.params.name;
+      let targetPet = this.props.pets.find(
+        pet => pet.name.toLowerCase() === name.toLowerCase()
+      );
+      return <Pet {...props} pet={targetPet} />;
+    };
     return (
-      <Route path='/pets' render={() => <PetList pets={this.props.pets} />} />
-
-    )
+      <Switch>
+        <Route
+          exact
+          path="/pets"
+          render={() => <PetList pets={this.props.pets} />}
+        />
+        <Route exact path="/pets/:name" render={getPet} />
+      </Switch>
+    );
   }
 }
 
