@@ -5,6 +5,7 @@ import "./App.css";
 import ragacs from "./images/ragacs.jpg";
 import pajti from "./images/pajti.jpg";
 import ragacsv from "./images/ragacsv.jpg";
+import pajtiv from './images/pajtiv.jpg'
 
 class App extends Component {
   static defaultProps = {
@@ -38,17 +39,17 @@ class App extends Component {
           "Falusi bandát toboroz",
           "A fűben szeret heverészni"
         ]
-      }
-      /*       {
-        name: "Pajti(vidéki)",
+      },
+      {
+        name: "Pajti-videki",
         age: 8,
         src: pajtiv,
         facts: [
-          "",
-          "",
-          ""
+          "Bogarakat fűben kergető",
+          "Kerítésmászó",
+          "Négy órát van ébren"
         ]
-      } */
+      }
     ]
   };
   render() {
